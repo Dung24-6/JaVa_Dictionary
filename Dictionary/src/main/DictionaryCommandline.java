@@ -1,4 +1,7 @@
+import java.io.FileNotFoundException;
+
 public class DictionaryCommandline extends Dictionary {
+
     public DictionaryCommandline() {
     }
 
@@ -13,6 +16,12 @@ public class DictionaryCommandline extends Dictionary {
     public void dictionaryBasic() {
         DictionaryManagement dictionary = new DictionaryManagement();
         dictionary.insertFromCommandline();
+        showAllWords();
+    }
+    public void dictionaryAdvaned() throws FileNotFoundException {
+        DictionaryManagement dictionary = new DictionaryManagement();
+        dictionary.insertFromFile();
+        dictionary. dictionaryLookup();
         showAllWords();
     }
 }

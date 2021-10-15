@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 take
 he
 take
 cam
+=======
+take
+he
+take
+cam
+>>>>>>> d2a1bff5dcccab08be74246c1bed77667eb77adb
 take

@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 hello	xin chao
 house	ngoi nha
 take	cam lay
+=======
+hello	xin chao
+house	ngoi nha
+take	cam lay
+>>>>>>> d2a1bff5dcccab08be74246c1bed77667eb77adb
 play	choi

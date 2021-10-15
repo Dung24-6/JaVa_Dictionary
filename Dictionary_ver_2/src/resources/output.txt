@@ -1,4 +1,4 @@
-hello	xin chao
-house	ngoi nha
-take	cam lay
-play	choi
+Hello	xin chao
+House	ngoi nha
+Take	cam lay
+Play	choi

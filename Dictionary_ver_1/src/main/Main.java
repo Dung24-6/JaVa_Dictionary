@@ -7,7 +7,6 @@ public class Main {
         DictionaryCommandline d = new DictionaryCommandline();
         // d.dictionaryBasic();
         d.dictionaryAdvaned();
-
-        System.out.println("Hello, World!");
+        
     }
 }

@@ -1,2 +1,2 @@
-take over	cam lay
-play	choi
+Take over	cam lay
+Play	choi

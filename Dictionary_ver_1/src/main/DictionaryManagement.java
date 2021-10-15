@@ -1,3 +1,4 @@
+package main;
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
@@ -29,12 +30,10 @@ public class DictionaryManagement extends Dictionary {
         Scanner scanner = new Scanner(new File("src\\resources\\dictionaries.txt"));
         scanner.useDelimiter("s*\ts*");
         while (scanner.hasNext()) {
-            //String wordscan = scanner.nextLine();
             Word word = new Word();
             word.setWord_target(scanner.next());
             word.setWord_explain((scanner.nextLine()).trim());
             wordList.add(word);
-
         }
         scanner.close();
     }
@@ -45,11 +44,10 @@ public class DictionaryManagement extends Dictionary {
         String s;
         s = scanner.nextLine();
         for (Word i:wordList ) {
-                if (i.getWord_target().equals(s)) {
-                    System.out.println(s + "  nghia la : " + i.getWord_explain());
-                }
-                else System.out.println("Chua dich duoc tu nay");
+            if (i.getWord_target().equals(s)) {
+                System.out.println(s + "  nghia la : " + i.getWord_explain());
             }
+            else System.out.println("Chua dich duoc tu nay");
+        }
     }
-
 }

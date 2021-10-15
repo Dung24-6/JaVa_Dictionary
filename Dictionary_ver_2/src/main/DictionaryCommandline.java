@@ -1,5 +1,4 @@
 package main;
-
 import java.io.IOException;
 
 public class DictionaryCommandline extends Dictionary {

@@ -1,3 +1,5 @@
+package main;
+
 public class DictionaryCommandline extends Dictionary {
     public DictionaryCommandline() {
     }

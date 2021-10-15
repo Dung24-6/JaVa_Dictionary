@@ -1,3 +1,4 @@
+package main;
 import java.io.FileNotFoundException;
 
 public class DictionaryCommandline extends Dictionary {
@@ -18,6 +19,7 @@ public class DictionaryCommandline extends Dictionary {
         dictionary.insertFromCommandline();
         showAllWords();
     }
+
     public void dictionaryAdvaned() throws FileNotFoundException {
         DictionaryManagement dictionary = new DictionaryManagement();
         dictionary.insertFromFile();

@@ -29,4 +29,9 @@ public class Word {
     public void setWord_explain(String word_explain) {
         this.word_explain = word_explain;
     }
+
+    @Override
+    public String toString() {
+        return "|" + word_target + "\t\t\t|" + word_explain;
+    }
 }

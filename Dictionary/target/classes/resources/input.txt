@@ -1,5 +1,5 @@
-take
-he
-take
-cam
-take
+hello
+hel
+hello, world!
+xin chào, tôi là lập trình viên!
+delete

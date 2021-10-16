@@ -1,12 +1,10 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 public class Dictionary {
-    public static ArrayList<Word> wordList = new ArrayList<>();
-
-    public static final Scanner scanner = new Scanner(System.in);
+    protected static List<Word> wordList = new ArrayList<>();
 
     public Dictionary() {
     }

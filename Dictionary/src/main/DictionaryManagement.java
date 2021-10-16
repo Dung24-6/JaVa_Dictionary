@@ -1,13 +1,20 @@
 package main;
+import javafx.print.Collation;
+
 import java.io.*;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class DictionaryManagement extends Dictionary {
     public DictionaryManagement() {
     }
 
+    /*
+     * Nhap vao tu dong lenh.
+     */
     public void insertFromCommandline() {
         System.out.print("Nhap so tu nhap vao tu dien: ");
+        Scanner scanner = new Scanner(System.in);
         int wordNumber = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < wordNumber; i++) {
             System.out.print("Nhap tu moi ");
@@ -20,9 +27,12 @@ public class DictionaryManagement extends Dictionary {
         System.out.println();
     }
 
-    public void insertFromFile() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("src\\resources\\dictionaries.txt"));
-        scanner.useDelimiter("s*\ts*");
+    /*
+     * Nhap vao tu file.
+     */
+    public void insertFromFile(String filePath) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(filePath));
+        scanner.useDelimiter("\t");
         while (scanner.hasNext()) {
             Word word = new Word();
             word.setWord_target(scanner.next());
@@ -32,28 +42,31 @@ public class DictionaryManagement extends Dictionary {
         scanner.close();
     }
 
-    public void dictionaryExportToFile() throws IOException {
-        File file = new File("src\\resources\\output.txt");
+    /*
+     * Xuat tu ra file.
+     */
+    public void dictionaryExportToFile(String filePath) throws IOException {
+        File file = new File(filePath);
         OutputStream outputStream = new FileOutputStream(file);
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
         for (Word i : wordList) {
             outputStreamWriter.write(i.getWord_target());
-            outputStreamWriter.write("\t");
+            outputStreamWriter.write("\t\t");
             outputStreamWriter.write(i.getWord_explain());
             outputStreamWriter.write("\n");
         }
         outputStreamWriter.flush();
     }
 
-    public void dictionaryLookup() {
-        System.out.println("Nhap tu muon tra nao ");
-        String s = scanner.nextLine();
+    /*
+     * Tim kiem chinh xac 1 tu trong danh sach.
+     */
+    public void dictionaryLookup(String word) {
         boolean found = false;
         for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(s)) {
-                System.out.println(s + " nghia la : " + i.getWord_explain());
+            if (i.getWord_target().equalsIgnoreCase(word)) {
+                System.out.println(i.getWord_target() + " co nghia la : " + i.getWord_explain());
                 found = true;
-                break;
             }
         }
         if (!found) {
@@ -61,36 +74,59 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
-    public void changeWord() {
-        System.out.println("Nhap tu muon thay doi nao ");
-        String target = scanner.nextLine();
+    /*
+     * Thay doi nghia cua tu trong danh sach.
+     */
+    public void modifyWord(Word word) {
         boolean found = false;
         for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(target)) {
-                System.out.println("Nhap nghia cua tu do nao ");
-                String explain = scanner.nextLine();
-                i.setWord_explain(explain);
+            if (i.getWord_target().equalsIgnoreCase(word.getWord_target())) {
+                i.setWord_explain(word.getWord_explain());
+                System.out.println(i.getWord_target() + " thay doi nghia thanh: " + i.getWord_explain());
                 found = true;
                 break;
             }
         }
         if (!found) {
-            System.out.println("Khong tim thay tu nay");
+            wordList.add(word);
         }
     }
 
-    public void deleteWord() {
-        System.out.println("Nhap tu muon xoa nao ");
-        String target = scanner.nextLine();
+    /*
+     * Xoa 1 tu khoi danh sach.
+     */
+    public void deleteWord(Word word) {
         boolean found = false;
-        for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(target)) {
+        for (int i = 0; i < wordList.size(); i++) {
+            if (wordList.get(i).getWord_target().equalsIgnoreCase(word.getWord_target())) {
+                System.out.println(wordList.get(i).getWord_target() + " dong " + i + " da bi xoa.");
                 wordList.remove(i);
                 found = true;
             }
         }
         if (!found) {
-            System.out.println("Khong tim thay tu nay");
+            System.out.println("Tu nay khong co trong danh sach");
+        }
+    }
+
+    /*
+     * Sap xep danh sach.
+     */
+    public void dictionarySort() {
+        //Collections.sort(wordList);
+    }
+
+    /*
+     * Loai bo tu trung trong danh sach.
+     */
+    public void dictionaryRemoveDuplicates() {
+        for (int i = 0; i < wordList.size(); i++) {
+            for (int j = i + 1; j < wordList.size(); j++) {
+                if (wordList.get(j).getWord_target().equalsIgnoreCase(wordList.get(i).getWord_target())
+                    && wordList.get(j).getWord_explain().equalsIgnoreCase(wordList.get(i).getWord_explain())) {
+                    deleteWord(wordList.get(j));
+                }
+            }
         }
     }
 }

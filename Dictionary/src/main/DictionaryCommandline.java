@@ -2,6 +2,8 @@ package main;
 
 import java.io.IOException;
 import java.util.Scanner;
+import org.json.simple.parser.ParseException;
+import main.GoogleTranslator.*;
 
 public class DictionaryCommandline extends DictionaryManagement {
 
@@ -75,6 +77,20 @@ public class DictionaryCommandline extends DictionaryManagement {
         if (!found) {
             System.out.println("Khong tim thay tu nay");
         }
+    }
+
+    /*
+     * Dich tu nhap tu dong lenh bang google translator.
+     */
+    public void googleTranslator(LANGUAGE src, LANGUAGE dest) throws IOException, ParseException {
+        System.out.println("Nhap tu ban muon dich");
+        String word = scanner.nextLine();
+
+        GoogleTranslator translator = new GoogleTranslator();
+        translator.setSrcLang(src);
+        translator.setDestLang(dest);
+        String data = translator.translate(word);
+        System.out.println(data);
     }
 
     /*

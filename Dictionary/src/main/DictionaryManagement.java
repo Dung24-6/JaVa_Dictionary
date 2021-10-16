@@ -1,8 +1,6 @@
 package main;
-import javafx.print.Collation;
 
 import java.io.*;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class DictionaryManagement extends Dictionary {
@@ -113,7 +111,7 @@ public class DictionaryManagement extends Dictionary {
      * Sap xep danh sach.
      */
     public void dictionarySort() {
-        //Collections.sort(wordList);
+        // TODO
     }
 
     /*

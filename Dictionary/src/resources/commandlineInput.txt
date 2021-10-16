@@ -3,3 +3,4 @@ hel
 hello, world!
 xin chào, tôi là lập trình viên!
 delete
+xin chào, tôi là lập trình viên!

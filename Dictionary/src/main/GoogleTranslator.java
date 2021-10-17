@@ -108,7 +108,7 @@ public class GoogleTranslator {
         AUTO("auto");
 
         private String lang = "";
-        private LANGUAGE(String lang) {
+        LANGUAGE(String lang) {
             this.lang = lang;
         }
         @Override

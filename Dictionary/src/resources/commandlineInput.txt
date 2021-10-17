@@ -1,5 +1,7 @@
 hello
 hel
+delete
+(v) xóa
 hello, world!
 xin chào, tôi là lập trình viên!
 delete

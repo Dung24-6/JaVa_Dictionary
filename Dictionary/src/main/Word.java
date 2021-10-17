@@ -32,6 +32,8 @@ public class Word {
 
     @Override
     public String toString() {
-        return "|" + word_target + "\t\t\t|" + word_explain;
+        String s = String.format("|%-20s\t|%s", word_target, word_explain);
+        return s;
+//        return "|" + word_target + "\t\t\t|" + word_explain;
     }
 }

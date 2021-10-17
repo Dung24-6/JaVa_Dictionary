@@ -3,7 +3,7 @@ package main;
 import java.io.IOException;
 import java.util.Scanner;
 import org.json.simple.parser.ParseException;
-import main.GoogleTranslator.*;
+import main.GoogleTranslator.LANGUAGE;
 
 public class DictionaryCommandline extends DictionaryManagement {
 
@@ -19,9 +19,11 @@ public class DictionaryCommandline extends DictionaryManagement {
      * Xuat tat ca cac tu trong danh sach ra man hinh.
      */
     public void showAllWords() {
-        System.out.println("No\t|English\t\t|Vietnamese");
+        System.out.printf("%-5s|%-20s\t|%s", "No", "English", "Vietnamese");
+        System.out.println();
         for (int i = 0; i < wordList.size(); i++) {
-            System.out.println(i + 1 + "\t" + wordList.get(i).toString());
+            System.out.printf("%-5d%s", i + 1, wordList.get(i).toString());
+            System.out.println();
         }
     }
 
@@ -45,6 +47,7 @@ public class DictionaryCommandline extends DictionaryManagement {
         dictionaryLookup();
         dictionarySearcher();
 
+        dictionaryAddWord();
         dictionaryModifyWord();
         dictionaryDeleteWord();
     }
@@ -80,17 +83,15 @@ public class DictionaryCommandline extends DictionaryManagement {
     }
 
     /*
-     * Dich tu nhap tu dong lenh bang google translator.
+     * Them 1 tu duoc nhap vao tu dong lenh.
      */
-    public void googleTranslator(LANGUAGE src, LANGUAGE dest) throws IOException, ParseException {
-        System.out.println("Nhap tu ban muon dich");
-        String word = scanner.nextLine();
-
-        GoogleTranslator translator = new GoogleTranslator();
-        translator.setSrcLang(src);
-        translator.setDestLang(dest);
-        String data = translator.translate(word);
-        System.out.println(data);
+    public void dictionaryAddWord() {
+        System.out.println("Nhap tu ban muon them vao");
+        Word word = new Word();
+        word.setWord_target(scanner.nextLine());
+        System.out.println("Nhap nghia cua tu do");
+        word.setWord_explain(scanner.nextLine());
+        super.addWord(word);
     }
 
     /*
@@ -113,5 +114,19 @@ public class DictionaryCommandline extends DictionaryManagement {
         Word word = new Word();
         word.setWord_target(scanner.nextLine());
         super.deleteWord(word);
+    }
+
+    /*
+     * Dich tu nhap tu dong lenh bang google translator.
+     */
+    public void googleTranslator(LANGUAGE src, LANGUAGE dest) throws IOException, ParseException {
+        System.out.println("Nhap tu ban muon dich");
+        String word = scanner.nextLine();
+
+        GoogleTranslator translator = new GoogleTranslator();
+        translator.setSrcLang(src);
+        translator.setDestLang(dest);
+        String data = translator.translate(word);
+        System.out.println(data);
     }
 }

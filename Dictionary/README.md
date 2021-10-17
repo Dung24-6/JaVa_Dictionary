@@ -8,14 +8,18 @@
 > Thực hiện:
 > 
 > **1. Hà Văn Quốc Dũng - 20020378**
-> 
+>
+> <https://github.com/Dung24-6>
+>  
 > **2. Lê Huy Hoàng - 20020409**
+> 
+> <https://github.com/>
 > 
 > **3. Trương Minh Đức - 2002396**
 > 
+> <https://github.com/minhduc-mll>
+> 
 > Cập nhật lần cuối: **19/10/2021**
->
-> <https://github.com/Dung24-6/JaVa_Dictionary>
 
 ---
 ### Mô tả
@@ -38,4 +42,3 @@ Gồm có các thư mục:
 * 
 
 ---
-### Bản quyền

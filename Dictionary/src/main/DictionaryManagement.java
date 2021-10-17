@@ -1,6 +1,11 @@
 package main;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 public class DictionaryManagement extends Dictionary {
@@ -69,6 +74,24 @@ public class DictionaryManagement extends Dictionary {
         }
         if (!found) {
             System.out.println("Chua dich duoc tu nay");
+        }
+    }
+
+    /*
+     * Them 1 tu vao trong danh sach.
+     */
+    public void addWord(Word word) {
+        boolean found = false;
+        for (Word i : wordList) {
+            if (i.getWord_target().equalsIgnoreCase(word.getWord_target())
+                && i.getWord_explain().equalsIgnoreCase(word.getWord_explain())) {
+                System.out.println(i.getWord_target() + " " + i.getWord_explain() + " da co trong danh sach.");
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            wordList.add(word);
         }
     }
 

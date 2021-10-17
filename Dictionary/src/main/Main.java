@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import org.json.simple.parser.ParseException;
+import Management.DictionaryCommandline;
 
 public class Main {
 
@@ -10,6 +11,6 @@ public class Main {
         // d.dictionaryBasic();
         d.dictionaryAdvaned();
 
-        d.googleTranslator(GoogleTranslator.LANGUAGE.AUTO, GoogleTranslator.LANGUAGE.ENGLISH);
+        d.googleTranslator();
     }
 }

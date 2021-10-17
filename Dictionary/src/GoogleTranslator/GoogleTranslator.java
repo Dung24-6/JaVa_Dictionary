@@ -1,4 +1,4 @@
-package main;
+package GoogleTranslator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -108,7 +108,7 @@ public class GoogleTranslator {
         AUTO("auto");
 
         private String lang = "";
-        LANGUAGE(String lang) {
+        private LANGUAGE(String lang) {
             this.lang = lang;
         }
         @Override

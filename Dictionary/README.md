@@ -13,7 +13,7 @@
 >  
 > **2. Lê Huy Hoàng - 20020409**
 > 
-> <https://github.com/>
+> <https://github.com/ktshglsm>
 > 
 > **3. Trương Minh Đức - 2002396**
 > 
@@ -30,15 +30,25 @@ Gồm có các thư mục:
 * Dictionary_ver_0 -> Phiên bản từ điển commandline sơ khai.
 * Dictionary_ver_1 -> Phiên bản từ điển commandline cải tiến lần 1.
 * Dictionary_ver_2 -> Phiên bản từ điển commandline cải tiến lần 2.
+* Dictionary_Commandline_final -> Phiên bản từ điển commandline đầy đủ.
 * Dictionary_final -> Phiên bản từ điển giao diện đồ họa cao cấp.
 
 ---
 ### Yêu cầu
-* Ngôn ngữ: JAVA 8
-* Thư viện: JSON 1.1.1
+1. Ngôn ngữ: JAVA 8
+
+
+2. Thư viện: 
+
+* JSON
+* Freetts
 
 ---
-### Cài đặt và sử dụng
-* 
+### Chức năng
+* Tìm kiếm trong danh sách từ điển.
+* Thêm từ vào danh sách từ điển.
+* Xóa từ trong danh sách từ điển.
+* Thay đổi từ trong danh sách từ điển.
+* Tìm kiếm bằng google translate API.
 
 ---

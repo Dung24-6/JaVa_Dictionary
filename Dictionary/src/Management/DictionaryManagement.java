@@ -1,4 +1,4 @@
-package main;
+package Management;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
+import org.json.simple.parser.ParseException;
+import GoogleTranslator.GoogleTranslator;
+import GoogleTranslator.GoogleTranslator.LANGUAGE;
 
 public class DictionaryManagement extends Dictionary {
     public DictionaryManagement() {
@@ -62,72 +65,66 @@ public class DictionaryManagement extends Dictionary {
     }
 
     /*
+     * Dich tu nhap tu dong lenh bang google translator.
+     */
+    public String googleTranslator(String word, LANGUAGE dest) throws IOException, ParseException {
+        GoogleTranslator translator = new GoogleTranslator();
+        translator.setSrcLang(LANGUAGE.AUTO);
+        translator.setDestLang(dest);
+        return translator.translate(word);
+    }
+
+    /*
      * Tim kiem chinh xac 1 tu trong danh sach.
      */
-    public void dictionaryLookup(String word) {
-        boolean found = false;
+    public String dictionaryLookup(String word) {
         for (Word i : wordList) {
             if (i.getWord_target().equalsIgnoreCase(word)) {
-                System.out.println(i.getWord_target() + " co nghia la : " + i.getWord_explain());
-                found = true;
+                return i.getWord_explain();
             }
         }
-        if (!found) {
-            System.out.println("Chua dich duoc tu nay");
-        }
+        return "Su dung google API";
     }
 
     /*
      * Them 1 tu vao trong danh sach.
      */
-    public void addWord(Word word) {
-        boolean found = false;
+    public boolean addWord(String wordTarget, String wordExplain) {
         for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(word.getWord_target())
-                && i.getWord_explain().equalsIgnoreCase(word.getWord_explain())) {
-                System.out.println(i.getWord_target() + " " + i.getWord_explain() + " da co trong danh sach.");
-                found = true;
-                break;
+            if (i.getWord_target().equalsIgnoreCase(wordTarget)
+                && i.getWord_explain().equalsIgnoreCase(wordExplain)) {
+                return false;
             }
         }
-        if (!found) {
-            wordList.add(word);
-        }
+        Word word = new Word(wordTarget, wordExplain);
+        wordList.add(word);
+        return true;
     }
 
     /*
      * Thay doi nghia cua tu trong danh sach.
      */
-    public void modifyWord(Word word) {
-        boolean found = false;
+    public boolean modifyWord(String wordTarget, String wordExplain) {
         for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(word.getWord_target())) {
-                i.setWord_explain(word.getWord_explain());
-                System.out.println(i.getWord_target() + " thay doi nghia thanh: " + i.getWord_explain());
-                found = true;
-                break;
+            if (i.getWord_target().equalsIgnoreCase(wordTarget)) {
+                i.setWord_explain(wordExplain);
+                return true;
             }
         }
-        if (!found) {
-            wordList.add(word);
-        }
+        return false;
     }
 
     /*
      * Xoa 1 tu khoi danh sach.
      */
-    public void deleteWord(Word word) {
-        boolean found = false;
+    public boolean deleteWord(String word) {
         for (int i = 0; i < wordList.size(); i++) {
-            if (wordList.get(i).getWord_target().equalsIgnoreCase(word.getWord_target())) {
-                System.out.println(wordList.get(i).getWord_target() + " dong " + i + " da bi xoa.");
+            if (wordList.get(i).getWord_target().equalsIgnoreCase(word)) {
                 wordList.remove(i);
-                found = true;
+                return true;
             }
         }
-        if (!found) {
-            System.out.println("Tu nay khong co trong danh sach");
-        }
+        return false;
     }
 
     /*
@@ -145,7 +142,7 @@ public class DictionaryManagement extends Dictionary {
             for (int j = i + 1; j < wordList.size(); j++) {
                 if (wordList.get(j).getWord_target().equalsIgnoreCase(wordList.get(i).getWord_target())
                     && wordList.get(j).getWord_explain().equalsIgnoreCase(wordList.get(i).getWord_explain())) {
-                    deleteWord(wordList.get(j));
+                    wordList.remove(j);
                 }
             }
         }

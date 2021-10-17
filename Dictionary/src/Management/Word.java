@@ -1,4 +1,4 @@
-package main;
+package Management;
 
 public class Word {
     private String word_target;

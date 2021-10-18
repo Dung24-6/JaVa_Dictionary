@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.Controller">
+   <children>
+      <Label layoutX="64.0" layoutY="44.0" text="HDĐ Dictionary">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button layoutX="5.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleSceneMenu" text="Back" />
+      <Label layoutX="14.0" layoutY="122.0" text="Add" />
+      <TextField layoutX="67.0" layoutY="121.0" prefHeight="25.0" prefWidth="100.0" promptText="New word" />
+      <TextField layoutX="185.0" layoutY="121.0" prefHeight="25.0" prefWidth="100.0" promptText="Mean" />
+      <Label layoutX="15.0" layoutY="172.0" text="Modify" />
+      <TextField layoutX="67.0" layoutY="168.0" prefHeight="25.0" prefWidth="100.0" promptText="Word" />
+      <TextField layoutX="185.0" layoutY="168.0" prefHeight="25.0" prefWidth="100.0" promptText="New mean" />
+      <Label layoutX="14.0" layoutY="219.0" text="Delete" />
+      <TextField layoutX="67.0" layoutY="215.0" prefHeight="25.0" prefWidth="220.0" promptText="Word" />
+      <ListView layoutY="300.0" prefHeight="300.0" prefWidth="300.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.Controller">
+   <children>
+      <Label alignment="CENTER" layoutX="60.0" layoutY="43.0" text="Advanced Seach">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button layoutY="49.0" mnemonicParsing="false" onAction="#handleSceneMenu" text="Back" />
+      <VBox layoutY="120.0" prefHeight="480.0" prefWidth="300.0">
+         <children>
+            <TextArea prefHeight="240.0" prefWidth="300.0" />
+            <TextField prefHeight="240.0" prefWidth="300.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

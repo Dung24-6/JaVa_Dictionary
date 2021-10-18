@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="488.0" prefWidth="255.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.Menu">
+   <children>
+      <VBox prefHeight="109.0" prefWidth="255.0" />
+      <VBox layoutY="136.0" prefHeight="354.0" prefWidth="255.0" />
+   </children>
+</AnchorPane>

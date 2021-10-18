@@ -1,9 +1,9 @@
-package main;
+package Management;
 
 import java.io.IOException;
 import java.util.Scanner;
 import org.json.simple.parser.ParseException;
-import main.GoogleTranslator.LANGUAGE;
+import GoogleTranslator.GoogleTranslator.LANGUAGE;
 
 public class DictionaryCommandline extends DictionaryManagement {
 
@@ -32,6 +32,8 @@ public class DictionaryCommandline extends DictionaryManagement {
      */
     public void dictionaryBasic() {
         insertFromCommandline();
+        super.dictionarySort();
+        super.dictionaryRemoveDuplicates();
         showAllWords();
     }
 
@@ -40,6 +42,7 @@ public class DictionaryCommandline extends DictionaryManagement {
      */
     public void dictionaryAdvaned() throws IOException {
         super.insertFromFile(input);
+        // super.dictionarySort();
         // super.dictionaryRemoveDuplicates();
         showAllWords();
         super.dictionaryExportToFile(output);
@@ -53,19 +56,10 @@ public class DictionaryCommandline extends DictionaryManagement {
     }
 
     /*
-     * Tim kiem chinh xac 1 tu duoc nhap vao tu dong lenh.
-     */
-    public void dictionaryLookup() {
-        System.out.println("Nhap tu ban muon tim kiem");
-        String word = scanner.nextLine();
-        super.dictionaryLookup(word);
-    }
-
-    /*
      * Tim kiem nhieu tu bat dau bang tu duoc nhap vao tu dong lenh.
      */
     public void dictionarySearcher() {
-        System.out.println("Nhap tu ban muon tim kiem");
+        System.out.println("Nhập từ bạn muốn tìm kiếm: ");
         String word = scanner.nextLine();
         boolean found = false;
         for (Word i : wordList) {
@@ -73,12 +67,27 @@ public class DictionaryCommandline extends DictionaryManagement {
                 continue;
             }
             if (i.getWord_target().substring(0, word.length()).equalsIgnoreCase(word)) {
-                System.out.println(i.getWord_target() + " nghia la: " + i.getWord_explain());
+                System.out.println(i.getWord_target() + " nghĩa là: " + i.getWord_explain());
                 found = true;
             }
         }
         if (!found) {
-            System.out.println("Khong tim thay tu nay");
+            System.out.println("Không tìm thấy từ này");
+        }
+    }
+
+    /*
+     * Tim kiem chinh xac 1 tu duoc nhap vao tu dong lenh.
+     */
+    public void dictionaryLookup() {
+        System.out.println("Nhập từ bạn muốn tìm kiếm: ");
+        String wordTarget = scanner.nextLine();
+        String wordExplain = super.dictionaryLookup(wordTarget);
+        if (wordExplain.equalsIgnoreCase("Sử dụng google translate API")) {
+            System.out.println("Không tìm thấy từ này");
+        } else {
+            Word word = new Word(wordTarget, wordExplain);
+            System.out.println(word);
         }
     }
 
@@ -86,34 +95,39 @@ public class DictionaryCommandline extends DictionaryManagement {
      * Them 1 tu duoc nhap vao tu dong lenh.
      */
     public void dictionaryAddWord() {
-        System.out.println("Nhap tu ban muon them vao");
-        Word word = new Word();
-        word.setWord_target(scanner.nextLine());
-        System.out.println("Nhap nghia cua tu do");
-        word.setWord_explain(scanner.nextLine());
-        super.addWord(word);
+        System.out.println("Nhập từ bạn muốn thêm vào: ");
+        String wordTarget = scanner.nextLine();
+        System.out.println("Nhập nghĩa của từ đó: ");
+        String wordExplain = scanner.nextLine();
+        if (super.addWord(wordTarget, wordExplain)) {
+            Word word = new Word(wordTarget, wordExplain);
+            System.out.println("Đã thêm từ: " + word);
+        }
     }
 
     /*
      * Thay doi nghia cua tu duoc nhap vao tu dong lenh.
      */
     public void dictionaryModifyWord() {
-        System.out.println("Nhap tu ban muon thay doi");
-        Word word = new Word();
-        word.setWord_target(scanner.nextLine());
-        System.out.println("Nhap nghia cua tu do");
-        word.setWord_explain(scanner.nextLine());
-        super.modifyWord(word);
+        System.out.println("Nhập từ bạn muốn sửa: ");
+        String wordTarget = scanner.nextLine();
+        System.out.println("Nhập nghĩa của từ đó: ");
+        String wordExplain = scanner.nextLine();
+        if (super.modifyWord(wordTarget, wordExplain)) {
+            Word word = new Word(wordTarget, wordExplain);
+            System.out.println("Đã sửa từ: " + word);
+        }
     }
 
     /*
      * Xoa 1 tu duoc nhap vao tu dong lenh khoi danh sach.
      */
     public void dictionaryDeleteWord() {
-        System.out.println("Nhap tu ban muon xoa");
-        Word word = new Word();
-        word.setWord_target(scanner.nextLine());
-        super.deleteWord(word);
+        System.out.println("Nhập từ bạn muốn xóa: ");
+        String word = scanner.nextLine();
+        if (super.deleteWord(word)) {
+            System.out.println("Đã xóa từ " + word);
+        }
     }
 
     /*
@@ -121,69 +135,63 @@ public class DictionaryCommandline extends DictionaryManagement {
      */
     public void googleTranslator() throws IOException, ParseException {
         while (true) {
-            System.out.println("Nhap 'EXIT' neu ban muon thoat.");
-            System.out.println("Nhap tu ban muon dich");
+            System.out.println("Nhập từ bạn muốn dịch: ");
             String word = scanner.nextLine();
-            if (word.equalsIgnoreCase("exit")) {
-                break;
-            }
-            System.out.println("Ban muon dich sang tieng nao? hay chon 1 so: ");
-            System.out.println("1 - Tieng Viet");
-            System.out.println("2 - Tieng Anh");
-            System.out.println("3 - Tieng Phap");
-            System.out.println("4 - Tieng Duc");
-            System.out.println("5 - Tieng Nga");
-            System.out.println("6 - Tieng Han");
-            System.out.println("7 - Tieng Nhat");
-            System.out.println("8 - Tieng Trung");
+            System.out.println("Bạn muốn dịch sang tiếng nào? Chọn 1 số: ");
+            System.out.println("1 - Tiếng Việt");
+            System.out.println("2 - Tiếng Anh");
+            System.out.println("3 - Tiếng Pháp");
+            System.out.println("4 - Tiếng Đức");
+            System.out.println("5 - Tiếng Nga");
+            System.out.println("6 - Tiếng Hàn");
+            System.out.println("7 - Tiếng Nhật");
+            System.out.println("8 - Tiếng Trung");
             String number = scanner.nextLine();
-            if (number.equalsIgnoreCase("exit")) {
-                break;
-            }
             LANGUAGE dest = null;
             switch (number) {
                 case "1":
                     dest = LANGUAGE.VIETNAMESE;
-                    System.out.println("Dich sang tieng Viet la: ");
+                    System.out.println("Dịch sang tiếng Việt là: ");
                     break;
                 case "2":
                     dest = LANGUAGE.ENGLISH;
-                    System.out.println("Dich sang tieng Anh la: ");
+                    System.out.println("Dịch sang tiếng Anh là: ");
                     break;
                 case "3":
                     dest = LANGUAGE.FRENCH;
-                    System.out.println("Dich sang tieng Phap la: ");
+                    System.out.println("Dịch sang tiếng Pháp là: ");
                     break;
                 case "4":
                     dest = LANGUAGE.GERMAN;
-                    System.out.println("Dich sang tieng Duc la: ");
+                    System.out.println("Dịch sang tiếng Đức là: ");
                     break;
                 case "5":
                     dest = LANGUAGE.RUSSIAN;
-                    System.out.println("Dich sang tieng Nga la: ");
+                    System.out.println("Dịch sang tiếng Nga là: ");
                     break;
                 case "6":
                     dest = LANGUAGE.KOREAN;
-                    System.out.println("Dich sang tieng Han la: ");
+                    System.out.println("Dịch sang tiếng Hàn là: ");
                     break;
                 case "7":
                     dest = LANGUAGE.JAPANESE;
-                    System.out.println("Dich sang tieng Nhat la: ");
+                    System.out.println("Dịch sang tiếng Nhật là: ");
                     break;
                 case "8":
                     dest = LANGUAGE.CHINESE;
-                    System.out.println("Dich sang tieng Trung la: ");
+                    System.out.println("Dịch sang tiếng Trung là: ");
                     break;
                 default:
-                    System.out.println("So ban chon khong dung.");
+                    System.out.println("Số bạn chọn không đúng.");
                     break;
             }
             if (dest != null) {
-                GoogleTranslator translator = new GoogleTranslator();
-                translator.setSrcLang(LANGUAGE.AUTO);
-                translator.setDestLang(dest);
-                String data = translator.translate(word);
-                System.out.println(data);
+                System.out.println(googleTranslator(word, dest));
+            }
+            System.out.println("Bạn có muốn dịch tiếp không? Y or N");
+            String exit = scanner.nextLine();
+            if (exit.equalsIgnoreCase("n") || exit.equalsIgnoreCase("no")) {
+                break;
             }
         }
     }

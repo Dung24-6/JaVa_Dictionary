@@ -1,4 +1,4 @@
-hello
+delete
 hel
 delete
 (v) xóa
@@ -7,4 +7,4 @@ xin chào, tôi là lập trình viên!
 delete
 xin chào, tôi là lập trình viên!
 1
-exit
+no

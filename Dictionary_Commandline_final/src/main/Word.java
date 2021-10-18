@@ -1,6 +1,6 @@
-package main;
+package Management;
 
-public class Word {
+public class Word implements Comparable {
     private String word_target;
     private String word_explain;
 
@@ -31,9 +31,17 @@ public class Word {
     }
 
     @Override
+    public int compareTo(Object o) {
+        Word other = (Word) o;
+        if (word_target.equalsIgnoreCase(other.getWord_target())) {
+            return word_explain.compareTo(other.getWord_explain());
+        }
+        return word_target.compareTo(other.getWord_target());
+    }
+
+    @Override
     public String toString() {
         String s = String.format("|%-20s\t|%s", word_target, word_explain);
         return s;
-//        return "|" + word_target + "\t\t\t|" + word_explain;
     }
 }

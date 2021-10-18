@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 import org.json.simple.parser.ParseException;
 import GoogleTranslator.GoogleTranslator;
@@ -19,13 +21,13 @@ public class DictionaryManagement extends Dictionary {
      * Nhap vao tu dong lenh.
      */
     public void insertFromCommandline() {
-        System.out.print("Nhap so tu nhap vao tu dien: ");
+        System.out.print("Số từ bạn nhập vào từ điển: ");
         Scanner scanner = new Scanner(System.in);
         int wordNumber = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < wordNumber; i++) {
-            System.out.print("Nhap tu moi ");
+            System.out.print("Nhập từ mới: ");
             String eng = scanner.nextLine();
-            System.out.print("Nhap giai nghia ");
+            System.out.print("Nhập giải nghĩa: ");
             String viet = scanner.nextLine();
             Word wordtam = new Word(eng, viet);
             wordList.add(wordtam);
@@ -36,14 +38,14 @@ public class DictionaryManagement extends Dictionary {
     /*
      * Nhap vao tu file.
      */
-    public void insertFromFile(String filePath) throws FileNotFoundException {
+    public void insertFromFile(String filePath, List<Word> list) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(filePath));
         scanner.useDelimiter("\t");
         while (scanner.hasNext()) {
             Word word = new Word();
             word.setWord_target(scanner.next());
             word.setWord_explain((scanner.nextLine()).trim());
-            wordList.add(word);
+            list.add(word);
         }
         scanner.close();
     }
@@ -51,11 +53,11 @@ public class DictionaryManagement extends Dictionary {
     /*
      * Xuat tu ra file.
      */
-    public void dictionaryExportToFile(String filePath) throws IOException {
+    public void dictionaryExportToFile(String filePath, List<Word> list) throws IOException {
         File file = new File(filePath);
         OutputStream outputStream = new FileOutputStream(file);
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
-        for (Word i : wordList) {
+        for (Word i : list) {
             outputStreamWriter.write(i.getWord_target());
             outputStreamWriter.write("\t\t");
             outputStreamWriter.write(i.getWord_explain());
@@ -83,7 +85,7 @@ public class DictionaryManagement extends Dictionary {
                 return i.getWord_explain();
             }
         }
-        return "Su dung google API";
+        return "Sử dụng google translate API";
     }
 
     /*
@@ -127,24 +129,4 @@ public class DictionaryManagement extends Dictionary {
         return false;
     }
 
-    /*
-     * Sap xep danh sach.
-     */
-    public void dictionarySort() {
-        // TODO
-    }
-
-    /*
-     * Loai bo tu trung trong danh sach.
-     */
-    public void dictionaryRemoveDuplicates() {
-        for (int i = 0; i < wordList.size(); i++) {
-            for (int j = i + 1; j < wordList.size(); j++) {
-                if (wordList.get(j).getWord_target().equalsIgnoreCase(wordList.get(i).getWord_target())
-                    && wordList.get(j).getWord_explain().equalsIgnoreCase(wordList.get(i).getWord_explain())) {
-                    wordList.remove(j);
-                }
-            }
-        }
-    }
 }

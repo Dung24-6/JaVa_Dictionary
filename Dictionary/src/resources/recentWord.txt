@@ -1,0 +1,4 @@
+hello, world!		xin chào, tôi là lập trình viên!
+delete		(v) xóa
+helpful		(adj) có ích; giúp đỡ
+hello		(v) xin chào

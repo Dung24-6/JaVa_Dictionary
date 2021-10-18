@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="803.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.Controller">
+   <children>
+      <TextArea layoutY="466.0" prefHeight="320.0" prefWidth="400.0" />
+      <TextField layoutY="146.0" prefHeight="320.0" prefWidth="400.0" />
+      <Label layoutX="110.0" layoutY="55.0" text="Advanced Seach">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,12 +1,12 @@
 .root{
-    //-fx-background-color: #F8F8F8;
+    -fx-background-color: linear-gradient(#1c92d2,#f2fcfe,#f2fcfe,#f2fcfe,#f2fcfe);
     -fx-font-size: 10pt;
 }
 .label{
-    -fx-text-fill: #7CAFC2
+    -fx-text-fill: #F8F8F8;
 }
 .button{
-    -fx-background-color: linear-gradient(#F8F8F8, #7CAFC2);
+    -fx-background-color: linear-gradient(#C9D6FF,#E2E2E2 );
     -fx-font-weight: bold;
 }
 #bold-label{

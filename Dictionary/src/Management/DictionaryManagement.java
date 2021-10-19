@@ -1,14 +1,8 @@
 package Management;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
 import org.json.simple.parser.ParseException;
 import GoogleTranslator.GoogleTranslator;
 import GoogleTranslator.GoogleTranslator.LANGUAGE;
@@ -38,32 +32,34 @@ public class DictionaryManagement extends Dictionary {
     /*
      * Nhap vao tu file.
      */
-    public void insertFromFile(String filePath, List<Word> list) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(filePath));
-        scanner.useDelimiter("\t");
-        while (scanner.hasNext()) {
-            Word word = new Word();
-            word.setWord_target(scanner.next());
-            word.setWord_explain((scanner.nextLine()).trim());
-            list.add(word);
+    public void insertFromFile(String pathFile) throws FileNotFoundException {
+        Scanner scan = new Scanner(new File(pathFile));
+
+        while (scan.hasNext()) {
+            String target = scan.nextLine();
+            String explain = scan.nextLine();
+
+            Dictionary.wordListHash.put(target, explain);
         }
-        scanner.close();
     }
 
     /*
      * Xuat tu ra file.
      */
-    public void dictionaryExportToFile(String filePath, List<Word> list) throws IOException {
-        File file = new File(filePath);
-        OutputStream outputStream = new FileOutputStream(file);
-        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
-        for (Word i : list) {
-            outputStreamWriter.write(i.getWord_target());
-            outputStreamWriter.write("\t\t");
-            outputStreamWriter.write(i.getWord_explain());
-            outputStreamWriter.write("\n");
+    public void dictionaryExportToFile() throws FileNotFoundException, IOException {
+        FileOutputStream fout = new FileOutputStream("data_Now.txt");
+
+        try (BufferedOutputStream bout = new BufferedOutputStream(fout)) {
+            Set set = Dictionary.wordListHash.entrySet();
+            Iterator iterator = set.iterator();
+
+            while(iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry)iterator.next();
+                String line = mentry.getKey() + "\n" + mentry.getValue();
+                bout.write(line.getBytes());
+                bout.write(System.lineSeparator().getBytes());
+            }
         }
-        outputStreamWriter.flush();
     }
 
     /*
@@ -79,54 +75,33 @@ public class DictionaryManagement extends Dictionary {
     /*
      * Tim kiem chinh xac 1 tu trong danh sach.
      */
-    public String dictionaryLookup(String word) {
-        for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(word)) {
-                return i.getWord_explain();
-            }
-        }
-        return "Sử dụng google translate API";
+    public boolean dictionaryLookUp(String target) {
+
+        return (Dictionary.wordListHash.get(target) != null);
     }
 
     /*
      * Them 1 tu vao trong danh sach.
      */
-    public boolean addWord(String wordTarget, String wordExplain) {
-        for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(wordTarget)
-                && i.getWord_explain().equalsIgnoreCase(wordExplain)) {
-                return false;
-            }
-        }
-        Word word = new Word(wordTarget, wordExplain);
-        wordList.add(word);
-        return true;
+    public void addWord(String target, String explain) {
+
+        Dictionary.wordListHash.put(target, explain);
     }
 
     /*
      * Thay doi nghia cua tu trong danh sach.
      */
-    public boolean modifyWord(String wordTarget, String wordExplain) {
-        for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(wordTarget)) {
-                i.setWord_explain(wordExplain);
-                return true;
-            }
-        }
-        return false;
+    public void modifyWord(String target, String explain) {
+
+        Dictionary.wordListHash.replace(target, explain);
     }
 
     /*
      * Xoa 1 tu khoi danh sach.
      */
-    public boolean deleteWord(String word) {
-        for (int i = 0; i < wordList.size(); i++) {
-            if (wordList.get(i).getWord_target().equalsIgnoreCase(word)) {
-                wordList.remove(i);
-                return true;
-            }
-        }
-        return false;
+    public void removeWord(String target) {
+
+        Dictionary.wordListHash.remove(target);
     }
 
 }

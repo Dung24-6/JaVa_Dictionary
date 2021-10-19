@@ -3,6 +3,7 @@ package Management;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.HashMap;
 
 public class Dictionary {
     protected static List<Word> wordList = new ArrayList<>();
@@ -11,11 +12,18 @@ public class Dictionary {
 
     protected static List<Word> favoriteWordList = new ArrayList<>();
 
+    public static HashMap<String, String> wordListHash = new HashMap<>();
+
+    public static HashMap<String, String> recentWordListHash = new HashMap<>();
+
+    public static HashMap<String, String> favoriteWorldList = new HashMap<>();
+
     public Dictionary() {
     }
 
     public void addRecent(Word word) {
-        recentWordList.add(0, word);
+
+        Dictionary.recentWordListHash.put(word.getWord_target(), word.getWord_explain());
         removeDuplicates(recentWordList);
     }
 
@@ -25,6 +33,9 @@ public class Dictionary {
     public void sort(List<Word> list) {
         Collections.sort(list);
     }
+    /*public void sortHash(HashMap<String,String> hashMap) {
+        Collections.sort(hashMap);
+    }*/
 
     /*
      * Loai bo tu trung trong danh sach.

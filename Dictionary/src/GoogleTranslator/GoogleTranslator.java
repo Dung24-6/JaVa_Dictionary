@@ -107,6 +107,29 @@ public class GoogleTranslator {
         CHINESE("zh"),
         AUTO("auto");
 
+        public static LANGUAGE stringToLanguage(String string) {
+            switch (string) {
+                case "VIETNAMESE":
+                    return VIETNAMESE;
+                case "ENGLISH":
+                    return ENGLISH;
+                case "FRENCH":
+                    return FRENCH;
+                case "GERMAN":
+                    return GERMAN;
+                case "RUSSIAN":
+                    return RUSSIAN;
+                case "KOREAN":
+                    return KOREAN;
+                case "JAPANESE":
+                    return JAPANESE;
+                case "CHINESE":
+                    return CHINESE;
+                default:
+                    return null;
+            }
+        }
+
         private String lang = "";
         private LANGUAGE(String lang) {
             this.lang = lang;

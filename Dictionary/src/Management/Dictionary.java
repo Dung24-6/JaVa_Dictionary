@@ -5,16 +5,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class Dictionary {
-    protected static List<Word> wordList = new ArrayList<>();
+    public static List<Word> wordList = new ArrayList<>();
 
-    protected static List<Word> recentWordList = new ArrayList<>();
+    public static List<Word> recentWordList = new ArrayList<>();
 
-    protected static List<Word> favoriteWordList = new ArrayList<>();
+    public static List<Word> favoriteWordList = new ArrayList<>();
 
     public Dictionary() {
     }
 
-    public void addRecent(Word word) {
+    public static void addRecent(Word word) {
         recentWordList.add(0, word);
         removeDuplicates(recentWordList);
     }
@@ -22,14 +22,14 @@ public class Dictionary {
     /*
      * Sap xep danh sach.
      */
-    public void sort(List<Word> list) {
+    public static void sort(List<Word> list) {
         Collections.sort(list);
     }
 
     /*
      * Loai bo tu trung trong danh sach.
      */
-    public void removeDuplicates(List<Word> list) {
+    public static void removeDuplicates(List<Word> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             for (int j = i + 1; j < list.size(); j++) {
                 if (list.get(j).getWord_target().equalsIgnoreCase(list.get(i).getWord_target())

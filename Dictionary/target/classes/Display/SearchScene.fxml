@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.SearchController">
+   <children>
+      <Label layoutX="71.0" layoutY="45.0" text="Normal Search">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button layoutX="2.0" layoutY="51.0" mnemonicParsing="false" onAction="#handleSceneMenu" text="Back" />
+      <VBox layoutX="2.0" layoutY="120.0" prefHeight="480.0" prefWidth="300.0">
+         <children>
+            <TextArea fx:id="wordTarget" prefHeight="240.0" prefWidth="300.0" promptText="Write here">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+            <TextArea fx:id="wordExplain" prefHeight="240.0" prefWidth="300.0" promptText="Result">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+         </children>
+      </VBox>
+      <Button layoutX="127.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleSearchButton" text="Search" />
+   </children>
+</AnchorPane>

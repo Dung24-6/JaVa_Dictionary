@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import org.json.simple.parser.ParseException;
@@ -14,6 +13,7 @@ import GoogleTranslator.GoogleTranslator;
 import GoogleTranslator.GoogleTranslator.LANGUAGE;
 
 public class DictionaryManagement extends Dictionary {
+
     public DictionaryManagement() {
     }
 
@@ -69,9 +69,9 @@ public class DictionaryManagement extends Dictionary {
     /*
      * Dich tu nhap tu dong lenh bang google translator.
      */
-    public String googleTranslator(String word, LANGUAGE dest) throws IOException, ParseException {
+    public static String googleTranslator(String word, LANGUAGE src, LANGUAGE dest) throws IOException, ParseException {
         GoogleTranslator translator = new GoogleTranslator();
-        translator.setSrcLang(LANGUAGE.AUTO);
+        translator.setSrcLang(src);
         translator.setDestLang(dest);
         return translator.translate(word);
     }
@@ -79,7 +79,7 @@ public class DictionaryManagement extends Dictionary {
     /*
      * Tim kiem chinh xac 1 tu trong danh sach.
      */
-    public String dictionaryLookup(String word) {
+    public static String dictionaryLookup(String word) {
         for (Word i : wordList) {
             if (i.getWord_target().equalsIgnoreCase(word)) {
                 return i.getWord_explain();
@@ -89,9 +89,26 @@ public class DictionaryManagement extends Dictionary {
     }
 
     /*
+     * Tim kiem nhieu tu co tu bat dau.
+     */
+    public static String dictionarySearcher(String word) {
+        String result = "";
+        for (Word i : wordList) {
+            if (i.getWord_target().length() < word.length()) {
+                continue;
+            }
+            if (i.getWord_target().substring(0, word.length()).equalsIgnoreCase(word)) {
+                result = result + i.getWord_target() + "\n";
+                addRecent(i);
+            }
+        }
+        return result;
+    }
+
+    /*
      * Them 1 tu vao trong danh sach.
      */
-    public boolean addWord(String wordTarget, String wordExplain) {
+    public static boolean addWord(String wordTarget, String wordExplain) {
         for (Word i : wordList) {
             if (i.getWord_target().equalsIgnoreCase(wordTarget)
                 && i.getWord_explain().equalsIgnoreCase(wordExplain)) {
@@ -106,7 +123,7 @@ public class DictionaryManagement extends Dictionary {
     /*
      * Thay doi nghia cua tu trong danh sach.
      */
-    public boolean modifyWord(String wordTarget, String wordExplain) {
+    public static boolean modifyWord(String wordTarget, String wordExplain) {
         for (Word i : wordList) {
             if (i.getWord_target().equalsIgnoreCase(wordTarget)) {
                 i.setWord_explain(wordExplain);
@@ -119,7 +136,7 @@ public class DictionaryManagement extends Dictionary {
     /*
      * Xoa 1 tu khoi danh sach.
      */
-    public boolean deleteWord(String word) {
+    public static boolean deleteWord(String word) {
         for (int i = 0; i < wordList.size(); i++) {
             if (wordList.get(i).getWord_target().equalsIgnoreCase(word)) {
                 wordList.remove(i);

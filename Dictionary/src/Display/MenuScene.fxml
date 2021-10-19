@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
 <?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.Controller">
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.MenuController">
    <children>
       <Label layoutX="80.0" layoutY="40.0" text="Zo Dictionary">
          <font>
@@ -26,17 +24,17 @@
                   <Font size="20.0" />
                </font>
             </Button>
+            <Button mnemonicParsing="false" onAction="#handleSceneAdvancedSearch" prefHeight="90.0" prefWidth="300.0" text="Advanced Search ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
             <Button mnemonicParsing="false" onAction="#handleSceneEdit" prefHeight="90.0" prefWidth="300.0" text="Edit">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#handleSceneHistory" prefHeight="90.0" prefWidth="300.0" text="History">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleSceneAdvancedSearch" prefHeight="90.0" prefWidth="300.0" text="Advanced Search ">
                <font>
                   <Font size="20.0" />
                </font>

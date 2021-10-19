@@ -37,23 +37,33 @@ public class DictionaryCommandline extends DictionaryManagement {
     public void dictionaryBasic() throws IOException {
         // insertFromCommandline();
         super.insertFromFile(input, wordList);
-        showAllWords(wordList);
         super.insertFromFile(recent, recentWordList);
-        showAllWords(recentWordList);
-
-
-        dictionaryLookup();
-        dictionarySearcher();
-
-        dictionaryAddWord();
-        dictionaryModifyWord();
-        dictionaryDeleteWord();
     }
 
     /*
      * Advanced.
      */
     public void dictionaryAdvaned() throws IOException {
+        super.sort(wordList);
+        super.removeDuplicates(wordList);
+        super.dictionaryExportToFile(output, wordList);
+
+        super.removeDuplicates(recentWordList);
+        super.dictionaryExportToFile(recent, recentWordList);
+    }
+
+    /*
+     * Import.
+     */
+    public void dictionaryImport() throws IOException {
+        super.insertFromFile(input, wordList);
+        super.insertFromFile(recent, recentWordList);
+    }
+
+    /*
+     * Export.
+     */
+    public void dictionaryExport() throws IOException {
         super.sort(wordList);
         super.removeDuplicates(wordList);
         super.dictionaryExportToFile(output, wordList);
@@ -197,7 +207,7 @@ public class DictionaryCommandline extends DictionaryManagement {
                     break;
             }
             if (dest != null) {
-                System.out.println(googleTranslator(word, dest));
+                System.out.println(googleTranslator(word, LANGUAGE.AUTO, dest));
             }
             System.out.println("Bạn có muốn dịch tiếp không? Y or N");
             String exit = scanner.nextLine();

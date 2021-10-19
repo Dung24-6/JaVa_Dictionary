@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.HistoryController">
+   <children>
+      <Label layoutX="111.0" layoutY="41.0" text="History">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button layoutX="7.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleSceneMenu" text="Back" />
+      <TableView fx:id="recentWordTable" layoutY="208.0" prefHeight="450.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="englishColumn" maxWidth="300.0" prefWidth="100.0" text="English" />
+          <TableColumn fx:id="vietnameseColumn" prefWidth="200.0" text="Vietnamese" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

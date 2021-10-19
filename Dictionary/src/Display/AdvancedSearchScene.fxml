@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.AdvancedSearchController">
+   <children>
+      <Label alignment="CENTER" layoutX="60.0" layoutY="43.0" text="Advanced Seach">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button layoutY="49.0" mnemonicParsing="false" onAction="#handleSceneMenu" text="Back" />
+      <VBox layoutY="120.0" prefHeight="480.0" prefWidth="300.0">
+         <children>
+            <ChoiceBox fx:id="languageChoices1" prefWidth="300.0" />
+            <TextArea fx:id="wordTarget" prefHeight="240.0" prefWidth="300.0" promptText="Write here">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+            <ChoiceBox fx:id="languageChoices2" layoutX="10.0" layoutY="10.0" prefWidth="300.0" />
+            <TextArea fx:id="wordExplain" prefHeight="240.0" prefWidth="300.0" promptText="Result">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+         </children>
+      </VBox>
+      <Button layoutX="125.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleAdvanceSearchButton" text="Search" />
+   </children>
+</AnchorPane>

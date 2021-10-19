@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.MenuController">
+   <children>
+      <Label layoutX="80.0" layoutY="40.0" text="Zo Dictionary">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="6.0" layoutY="89.0" text="Choose the function you want">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <VBox layoutX="1.0" layoutY="200.0" prefHeight="400.0" prefWidth="300.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleSceneSearch" prefHeight="90.0" prefWidth="300.0" text="Normal Search">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleSceneAdvancedSearch" prefHeight="90.0" prefWidth="300.0" text="Advanced Search ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleSceneEdit" prefHeight="90.0" prefWidth="300.0" text="Edit">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleSceneHistory" prefHeight="90.0" prefWidth="300.0" text="History">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleExitButton" prefHeight="90.0" prefWidth="300.0" text="Exit">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <AmbientLight color="CHARTREUSE" layoutX="222.0" layoutY="75.0" lightOn="true" scaleX="100.0" scaleY="100.0" scaleZ="100.0" translateY="60.0" translateZ="60.0" />
+   </children>
+</AnchorPane>

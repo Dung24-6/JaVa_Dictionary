@@ -19,7 +19,7 @@
 > 
 > <https://github.com/minhduc-mll>
 > 
-> Cập nhật lần cuối: **19/10/2021**
+> Cập nhật lần cuối: **20/10/2021**
 
 ---
 ### Mô tả

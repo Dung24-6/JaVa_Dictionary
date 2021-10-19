@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.HistoryController">
    <children>
-      <Label layoutX="111.0" layoutY="41.0" text="History">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="14.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" rotate="29.7">
+         <image>
+            <Image url="@../resources/images/unknown9.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="107.0" layoutY="44.0" text="History">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold Italic" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="7.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleSceneMenu" text="Back" />
-      <TableView fx:id="recentWordTable" layoutY="208.0" prefHeight="450.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TableView fx:id="recentWordTable" layoutY="220.0" prefHeight="480.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <columns>
           <TableColumn fx:id="englishColumn" maxWidth="300.0" prefWidth="100.0" text="English" />
           <TableColumn fx:id="vietnameseColumn" prefWidth="200.0" text="Vietnamese" />
         </columns>
       </TableView>
+      <Group>
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/Menu.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSceneMenu" opacity="0.0" prefHeight="30.0" prefWidth="30.0" text="Back" />
+         </children>
+      </Group>
    </children>
 </AnchorPane>

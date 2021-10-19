@@ -6,20 +6,16 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicReference;
 
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import org.json.simple.parser.ParseException;
 import Management.DictionaryManagement;
 import GoogleTranslator.GoogleTranslator.LANGUAGE;
 
 public class AdvancedSearchController {
-
-    ObservableList<String> languageList = FXCollections.observableArrayList(
-            );
 
     @FXML
     private TextArea wordTarget;
@@ -29,6 +25,7 @@ public class AdvancedSearchController {
     private ChoiceBox<String> languageChoices1 = new ChoiceBox<>();
     @FXML
     private ChoiceBox<String> languageChoices2 = new ChoiceBox<>();
+
     @FXML
     private void initialize() {
         wordTarget.setWrapText(true);
@@ -76,5 +73,19 @@ public class AdvancedSearchController {
         String result = DictionaryManagement.googleTranslator(word,
                         LANGUAGE.stringToLanguage(languageTarget), LANGUAGE.stringToLanguage(languageExplain));
         wordExplain.setText(result);
+    }
+    public void handleVoiceButton1(ActionEvent event) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        voice.allocate();
+        voice.speak(wordTarget.getText());
+        voice.deallocate();
+    }
+    public void handleVoiceButton2(ActionEvent event) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        voice.allocate();
+        voice.speak(wordExplain.getText());
+        voice.deallocate();
     }
 }

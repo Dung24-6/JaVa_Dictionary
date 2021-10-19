@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -7,45 +12,180 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.MenuController">
    <children>
-      <Label layoutX="80.0" layoutY="40.0" text="Zo Dictionary">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="6.0" layoutY="89.0" text="Choose the function you want">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <VBox layoutX="1.0" layoutY="200.0" prefHeight="400.0" prefWidth="300.0">
+      <Group>
          <children>
-            <Button mnemonicParsing="false" onAction="#handleSceneSearch" prefHeight="90.0" prefWidth="300.0" text="Normal Search">
+            <ImageView fitHeight="140.0" fitWidth="140.0" layoutX="88.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" translateX="-2.0">
+               <image>
+                  <Image url="@../resources/images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="80.0" layoutY="40.0" opacity="0.0" text="Zo Dictionary">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleSceneAdvancedSearch" prefHeight="90.0" prefWidth="300.0" text="Advanced Search ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleSceneEdit" prefHeight="90.0" prefWidth="300.0" text="Edit">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleSceneHistory" prefHeight="90.0" prefWidth="300.0" text="History">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleExitButton" prefHeight="90.0" prefWidth="300.0" text="Exit">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Label>
          </children>
-      </VBox>
-      <AmbientLight color="CHARTREUSE" layoutX="222.0" layoutY="75.0" lightOn="true" scaleX="100.0" scaleY="100.0" scaleZ="100.0" translateY="60.0" translateZ="60.0" />
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Group>
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="10.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/united-kingdom.png" />
+         </image>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/germany.png" />
+         </image>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="225.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/united-states.png" />
+         </image>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="226.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/vietnam.png" />
+         </image>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </ImageView>
+      <Label layoutX="15.0" layoutY="185.0" text="Choose the function you want">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Label>
+      <Group AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button layoutY="225.0" mnemonicParsing="false" onAction="#handleSceneSearch" prefHeight="75.0" prefWidth="300.0" text="Normal Search">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Button>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="30.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/iconSeach.png" />
+               </image>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </ImageView>
+         </children>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Group>
+      <Group AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button layoutY="300.0" mnemonicParsing="false" onAction="#handleSceneEdit" prefHeight="75.0" prefWidth="300.0" text="Edit">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Button>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="30.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/Edit.png" />
+               </image>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </ImageView>
+         </children>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Group>
+      <Group AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button layoutY="375.0" mnemonicParsing="false" onAction="#handleSceneHistory" prefHeight="75.0" prefWidth="300.0" text="History">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Button>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="30.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/History.png" />
+               </image>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </ImageView>
+         </children>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Group>
+      <Group AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button layoutY="450.0" mnemonicParsing="false" onAction="#handleSceneAdvancedSearch" prefHeight="75.0" prefWidth="300.0" text="Advanced Search ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Button>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="30.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/Google_Translate_logo.svg.png" />
+               </image>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </ImageView>
+         </children>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Group>
+      <Group AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button layoutY="525.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="75.0" prefWidth="300.0" text="Exit">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Button>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="30.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/Exit.png" />
+               </image>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </ImageView>
+         </children>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Group>
    </children>
 </AnchorPane>

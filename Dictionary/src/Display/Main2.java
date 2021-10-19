@@ -24,6 +24,7 @@ public class Main2  extends Application {
         primaryStage.setTitle("Dictionary");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("Style.css").toExternalForm());
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

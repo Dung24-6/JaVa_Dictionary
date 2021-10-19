@@ -36,40 +36,50 @@ public class DictionaryCommandline extends DictionaryManagement {
      */
     public void dictionaryBasic() throws IOException {
         // insertFromCommandline();
-        super.insertFromFile(input, wordList);
-        super.insertFromFile(recent, recentWordList);
+        insertFromFile(input, wordList);
+        showAllWords(wordList);
+        insertFromFile(recent, recentWordList);
+        showAllWords(recentWordList);
+
+
+        dictionaryLookup();
+        dictionarySearcher();
+
+        dictionaryAddWord();
+        dictionaryModifyWord();
+        dictionaryDeleteWord();
     }
 
     /*
      * Advanced.
      */
     public void dictionaryAdvaned() throws IOException {
-        super.sort(wordList);
-        super.removeDuplicates(wordList);
-        super.dictionaryExportToFile(output, wordList);
+        sort(wordList);
+        removeDuplicates(wordList);
+        dictionaryExportToFile(output, wordList);
 
-        super.removeDuplicates(recentWordList);
-        super.dictionaryExportToFile(recent, recentWordList);
+        removeDuplicates(recentWordList);
+        dictionaryExportToFile(recent, recentWordList);
     }
 
     /*
      * Import.
      */
     public void dictionaryImport() throws IOException {
-        super.insertFromFile(input, wordList);
-        super.insertFromFile(recent, recentWordList);
+        insertFromFile(input, wordList);
+        insertFromFile(recent, recentWordList);
     }
 
     /*
      * Export.
      */
     public void dictionaryExport() throws IOException {
-        super.sort(wordList);
-        super.removeDuplicates(wordList);
-        super.dictionaryExportToFile(output, wordList);
+        sort(wordList);
+        removeDuplicates(wordList);
+        dictionaryExportToFile(output, wordList);
 
-        super.removeDuplicates(recentWordList);
-        super.dictionaryExportToFile(recent, recentWordList);
+        removeDuplicates(recentWordList);
+        dictionaryExportToFile(recent, recentWordList);
     }
 
     /*
@@ -100,12 +110,11 @@ public class DictionaryCommandline extends DictionaryManagement {
     public void dictionaryLookup() {
         System.out.println("Nhập từ bạn muốn tìm kiếm: ");
         String wordTarget = scanner.nextLine();
-        String wordExplain = super.dictionaryLookup(wordTarget);
+        String wordExplain = dictionaryLookup(wordTarget);
         if (wordExplain.equalsIgnoreCase("Sử dụng google translate API")) {
             System.out.println("Không tìm thấy từ này");
         } else {
             Word word = new Word(wordTarget, wordExplain);
-            addRecent(word);
             System.out.println(word);
         }
     }
@@ -118,9 +127,8 @@ public class DictionaryCommandline extends DictionaryManagement {
         String wordTarget = scanner.nextLine();
         System.out.println("Nhập nghĩa của từ đó: ");
         String wordExplain = scanner.nextLine();
-        if (super.addWord(wordTarget, wordExplain)) {
+        if (addWord(wordTarget, wordExplain)) {
             Word word = new Word(wordTarget, wordExplain);
-            addRecent(word);
             System.out.println("Đã thêm từ: " + word);
         }
     }
@@ -133,9 +141,8 @@ public class DictionaryCommandline extends DictionaryManagement {
         String wordTarget = scanner.nextLine();
         System.out.println("Nhập nghĩa của từ đó: ");
         String wordExplain = scanner.nextLine();
-        if (super.modifyWord(wordTarget, wordExplain)) {
+        if (modifyWord(wordTarget, wordExplain)) {
             Word word = new Word(wordTarget, wordExplain);
-            addRecent(word);
             System.out.println("Đã sửa từ: " + word);
         }
     }
@@ -146,7 +153,7 @@ public class DictionaryCommandline extends DictionaryManagement {
     public void dictionaryDeleteWord() {
         System.out.println("Nhập từ bạn muốn xóa: ");
         String word = scanner.nextLine();
-        if (super.deleteWord(word)) {
+        if (deleteWord(word)) {
             System.out.println("Đã xóa từ " + word);
         }
     }

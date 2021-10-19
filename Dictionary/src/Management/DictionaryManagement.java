@@ -13,7 +13,6 @@ import GoogleTranslator.GoogleTranslator;
 import GoogleTranslator.GoogleTranslator.LANGUAGE;
 
 public class DictionaryManagement extends Dictionary {
-
     public DictionaryManagement() {
     }
 
@@ -71,25 +70,13 @@ public class DictionaryManagement extends Dictionary {
      */
     public static String googleTranslator(String word, LANGUAGE src, LANGUAGE dest) throws IOException, ParseException {
         GoogleTranslator translator = new GoogleTranslator();
-        translator.setSrcLang(src);
+        translator.setSrcLang(LANGUAGE.AUTO);
         translator.setDestLang(dest);
         return translator.translate(word);
     }
 
     /*
-     * Tim kiem chinh xac 1 tu trong danh sach.
-     */
-    public static String dictionaryLookup(String word) {
-        for (Word i : wordList) {
-            if (i.getWord_target().equalsIgnoreCase(word)) {
-                return i.getWord_explain();
-            }
-        }
-        return "Sử dụng google translate API";
-    }
-
-    /*
-     * Tim kiem nhieu tu co tu bat dau.
+     * Tim kiem nhieu tu.
      */
     public static String dictionarySearcher(String word) {
         String result = "";
@@ -106,17 +93,48 @@ public class DictionaryManagement extends Dictionary {
     }
 
     /*
+     * Tim kiem chinh xac 1 tu trong danh sach.
+     */
+    public static String dictionaryLookup(String word) {
+        for (Word i : wordList) {
+            if (i.getWord_target().equalsIgnoreCase(word)) {
+                addRecent(i);
+                return i.getWord_explain();
+            }
+        }
+        return "Sử dụng google translate API";
+    }
+    public static String dictionaryBinaryLookup(String wordToSearch) {
+        int left = 0;
+        int right = wordList.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            Word word = wordList.get(mid);
+            if (word.getWord_target().equalsIgnoreCase(wordToSearch)) {
+                return word.getWord_explain();
+            }
+            if (word.getWord_target().compareTo(wordToSearch) > 0) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return "Sử dụng google translate API";
+    }
+
+    /*
      * Them 1 tu vao trong danh sach.
      */
     public static boolean addWord(String wordTarget, String wordExplain) {
         for (Word i : wordList) {
             if (i.getWord_target().equalsIgnoreCase(wordTarget)
-                && i.getWord_explain().equalsIgnoreCase(wordExplain)) {
+                    && i.getWord_explain().equalsIgnoreCase(wordExplain)) {
                 return false;
             }
         }
         Word word = new Word(wordTarget, wordExplain);
         wordList.add(word);
+        addRecent(word);
         return true;
     }
 
@@ -127,6 +145,7 @@ public class DictionaryManagement extends Dictionary {
         for (Word i : wordList) {
             if (i.getWord_target().equalsIgnoreCase(wordTarget)) {
                 i.setWord_explain(wordExplain);
+                addRecent(i);
                 return true;
             }
         }
@@ -139,6 +158,7 @@ public class DictionaryManagement extends Dictionary {
     public static boolean deleteWord(String word) {
         for (int i = 0; i < wordList.size(); i++) {
             if (wordList.get(i).getWord_target().equalsIgnoreCase(word)) {
+                addRecent(wordList.get(i));
                 wordList.remove(i);
                 return true;
             }

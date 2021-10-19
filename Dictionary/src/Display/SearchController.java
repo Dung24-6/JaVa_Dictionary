@@ -1,5 +1,7 @@
 package Display;
 
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -36,7 +38,7 @@ public class SearchController {
     }
     public void handleSearchButton() {
         String word = wordTarget.getText();
-        String result = DictionaryManagement.dictionaryLookup(word);
+        String result = DictionaryManagement.dictionaryBinaryLookup(word);
         if (result.equalsIgnoreCase("Sử dụng google translate API")) {
             String suggest = DictionaryManagement.dictionarySearcher(word);
             wordExplain.setText(suggest);
@@ -44,5 +46,18 @@ public class SearchController {
         }
         wordExplain.setText(result);
     }
-
+    public void handleVoiceButton1(ActionEvent event) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        voice.allocate();
+        voice.speak(wordTarget.getText());
+        voice.deallocate();
+    }
+    public void handleVoiceButton2(ActionEvent event) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        voice.allocate();
+        voice.speak(wordExplain.getText());
+        voice.deallocate();
+    }
 }

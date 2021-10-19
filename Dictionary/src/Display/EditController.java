@@ -84,22 +84,24 @@ public class EditController {
     public void handleDeleteButton() {
         // Xoa tu tim kiem
         String word = deleteTextField.getText();
-        DictionaryManagement.deleteWord(word);
+        if (word.equals("")) {
+            // Xoa tu duoc chon
+            ObservableList<Word> wordSelected;
+            ObservableList<Word> allWord;
+            allWord = wordTable.getItems();
+            wordSelected = wordTable.getSelectionModel().getSelectedItems();
 
-        wordObservableList = FXCollections.observableList(DictionaryManagement.wordList);
-        wordTable.setItems(wordObservableList);
-        wordTable.refresh();
+            wordSelected.forEach(allWord :: remove);
+            wordTable.refresh();
+        } else {
+            DictionaryManagement.deleteWord(word);
 
-        deleteTextField.clear();
+            wordObservableList = FXCollections.observableList(DictionaryManagement.wordList);
+            wordTable.setItems(wordObservableList);
+            wordTable.refresh();
 
-        // Xoa tu duoc chon
-        ObservableList<Word> wordSelected;
-        ObservableList<Word> allWord;
-        allWord = wordTable.getItems();
-        wordSelected = wordTable.getSelectionModel().getSelectedItems();
-
-        wordSelected.forEach(allWord :: remove);
-        wordTable.refresh();
+            deleteTextField.clear();
+        }
     }
 
 }

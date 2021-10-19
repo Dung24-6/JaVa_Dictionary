@@ -34,7 +34,7 @@ public class DictionaryCommandline extends DictionaryManagement {
     /*
      * Basic.
      */
-    public void dictionaryBasic() throws IOException {
+    /*public void dictionaryBasic() throws IOException {
         // insertFromCommandline();
         super.insertFromFile(input, wordList);
         showAllWords(wordList);
@@ -48,24 +48,24 @@ public class DictionaryCommandline extends DictionaryManagement {
         dictionaryAddWord();
         dictionaryModifyWord();
         dictionaryDeleteWord();
-    }
+    }*/
 
     /*
      * Advanced.
      */
-    public void dictionaryAdvaned() throws IOException {
+    /*public void dictionaryAdvaned() throws IOException {
         super.sort(wordList);
         super.removeDuplicates(wordList);
         super.dictionaryExportToFile(output, wordList);
 
         super.removeDuplicates(recentWordList);
         super.dictionaryExportToFile(recent, recentWordList);
-    }
+    }*/
 
     /*
      * Tim kiem nhieu tu bat dau bang tu duoc nhap vao tu dong lenh.
      */
-    public void dictionarySearcher() {
+    /*public void dictionarySearcher() {
         System.out.println("Nhập từ bạn muốn tìm kiếm: ");
         String word = scanner.nextLine();
         boolean found = false;
@@ -82,12 +82,12 @@ public class DictionaryCommandline extends DictionaryManagement {
         if (!found) {
             System.out.println("Không tìm thấy từ này");
         }
-    }
+    }*/
 
     /*
      * Tim kiem chinh xac 1 tu duoc nhap vao tu dong lenh.
      */
-    public void dictionaryLookup() {
+    /*public void dictionaryLookup() {
         System.out.println("Nhập từ bạn muốn tìm kiếm: ");
         String wordTarget = scanner.nextLine();
         String wordExplain = super.dictionaryLookup(wordTarget);
@@ -98,12 +98,12 @@ public class DictionaryCommandline extends DictionaryManagement {
             addRecent(word);
             System.out.println(word);
         }
-    }
+    }*/
 
     /*
      * Them 1 tu duoc nhap vao tu dong lenh.
      */
-    public void dictionaryAddWord() {
+    /*public void dictionaryAddWord() {
         System.out.println("Nhập từ bạn muốn thêm vào: ");
         String wordTarget = scanner.nextLine();
         System.out.println("Nhập nghĩa của từ đó: ");
@@ -113,12 +113,12 @@ public class DictionaryCommandline extends DictionaryManagement {
             addRecent(word);
             System.out.println("Đã thêm từ: " + word);
         }
-    }
+    }*/
 
     /*
      * Thay doi nghia cua tu duoc nhap vao tu dong lenh.
      */
-    public void dictionaryModifyWord() {
+    /*public void dictionaryModifyWord() {
         System.out.println("Nhập từ bạn muốn sửa: ");
         String wordTarget = scanner.nextLine();
         System.out.println("Nhập nghĩa của từ đó: ");
@@ -128,18 +128,18 @@ public class DictionaryCommandline extends DictionaryManagement {
             addRecent(word);
             System.out.println("Đã sửa từ: " + word);
         }
-    }
+    }*/
 
     /*
      * Xoa 1 tu duoc nhap vao tu dong lenh khoi danh sach.
      */
-    public void dictionaryDeleteWord() {
+    /*public void dictionaryDeleteWord() {
         System.out.println("Nhập từ bạn muốn xóa: ");
         String word = scanner.nextLine();
         if (super.deleteWord(word)) {
             System.out.println("Đã xóa từ " + word);
         }
-    }
+    }*/
 
     /*
      * Dich tu nhap tu dong lenh bang google translator.

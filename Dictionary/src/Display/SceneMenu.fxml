@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,45 +10,91 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.Controller">
    <children>
-      <Label layoutX="80.0" layoutY="40.0" text="Zo Dictionary">
+      <Label layoutX="80.0" layoutY="40.0" opacity="0.0" text="Zo Dictionary">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="6.0" layoutY="89.0" text="Choose the function you want">
+      <Label layoutX="14.0" layoutY="187.0" text="Choose the function you want">
          <font>
-            <Font size="16.0" />
+            <Font name="System Italic" size="16.0" />
          </font>
       </Label>
-      <VBox layoutX="1.0" layoutY="200.0" prefHeight="400.0" prefWidth="300.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#handleSceneSearch" prefHeight="90.0" prefWidth="300.0" text="Normal Search">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleSceneEdit" prefHeight="90.0" prefWidth="300.0" text="Edit">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleSceneHistory" prefHeight="90.0" prefWidth="300.0" text="History">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleSceneAdvancedSearch" prefHeight="90.0" prefWidth="300.0" text="Advanced Search ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleExitButton" prefHeight="90.0" prefWidth="300.0" text="Exit">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
       <AmbientLight color="CHARTREUSE" layoutX="222.0" layoutY="75.0" lightOn="true" scaleX="100.0" scaleY="100.0" scaleZ="100.0" translateY="60.0" translateZ="60.0" />
+      <Button layoutX="1.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleSceneSearch" prefHeight="75.0" prefWidth="300.0" text="Normal Search">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="1.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleSceneEdit" prefHeight="75.0" prefWidth="300.0" text="Edit">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="1.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleSceneHistory" prefHeight="75.0" prefWidth="300.0" text="History">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="1.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleSceneAdvancedSearch" prefHeight="75.0" prefWidth="300.0" text="Advanced Search ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="1.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="75.0" prefWidth="300.0" text="Exit">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="29.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/iconSeach.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="29.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/Edit.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="29.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/History.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="29.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/Google_Translate_logo.svg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="29.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/Exit.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="137.0" fitWidth="140.0" layoutX="89.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" translateX="-2.0">
+         <image>
+            <Image url="@../resources/images/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/united-kingdom.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/germany.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="226.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/united-states.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="226.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/vietnam.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

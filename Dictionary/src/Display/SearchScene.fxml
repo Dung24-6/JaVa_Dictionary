@@ -45,7 +45,7 @@
          <children>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/images/Menu.png" />
+                  <Image url="@../resources/images/MenuBlue.png" />
                </image>
                <rotationAxis>
                   <Point3D />

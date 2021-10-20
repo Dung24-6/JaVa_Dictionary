@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.SearchController">
+   <children>
+      <ImageView fitHeight="186.0" fitWidth="189.0" layoutX="114.58021545410156" layoutY="-34.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-34.0">
+         <image>
+            <Image url="@../resources/images/unknown1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-50.0" layoutY="70.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/unknown3.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="68.0" layoutY="44.0" text="Normal Search">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="wordTarget" layoutY="120.0" prefHeight="240.0" prefWidth="300.0" promptText="Write here" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </TextArea>
+      <TextArea fx:id="wordExplain" layoutY="360.0" prefHeight="240.0" prefWidth="300.0" promptText="Result" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </TextArea>
+      <Group>
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/MenuBlue.png" />
+               </image>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </ImageView>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSceneMenu" opacity="0.0" prefHeight="30.0" prefWidth="30.0" text="Back" />
+         </children>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Group>
+      <Group>
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="215.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/iconSeach.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="215.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleSearchButton" opacity="0.0" prefHeight="30.0" prefWidth="30.0" text="S" />
+         </children>
+      </Group>
+      <Group>
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="260.0" layoutY="315.0" onMouseClicked="#handleSceneMenu" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/volume.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="260.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleVoiceButton1" opacity="0.0" prefHeight="30.0" prefWidth="30.0" text="V1" />
+         </children>
+      </Group>
+      <Group>
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="260.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/volume.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="260.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleVoiceButton2" opacity="0.0" prefHeight="30.0" prefWidth="30.0" text="V2" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>
